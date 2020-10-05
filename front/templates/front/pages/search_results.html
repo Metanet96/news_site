@@ -1,0 +1,58 @@
+{% extends 'front/layouts/base.html' %}
+{% block main %}
+<body class="single single-post postid-2297 single-format-standard with_aside aside_right layout-full-width header-stack header-magazine minimalist-header sticky-header sticky-white ">
+<br>
+<hr>
+<div class="container">
+    <div class="mx-auto">
+        <h1>{{ counts }} result{{ counts|pluralize }} found for <span style="color:blue">'{{query_string}}'</span> :
+        </h1>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="column one column_blog">
+        <div class="blog_wrapper isotope_wrapper">
+            <div class="posts_group lm_wrapper classic">
+                {% for post in posts %}
+                <div class="post-2291 post  format-standard has-post-thumbnail  category-lifestyle  post-item isotope-item clearfix">
+                    <div class="post-desc-wrapper">
+                        <div class="post-desc">
+                            <div class="post-meta clearfix">
+                                <div class="author-date">
+                                        <span class="author"><span>Published by </span><i class="icon-user"></i> <a
+                                                href="{% url 'front:post_author_details' post.author %}">{{ post.author }}</a>
+                                        </span><span class="date"><span> at </span><i class="icon-clock"></i> {{ post.time }}</span>
+                                </div>
+                                <div class="category">
+                                    <span class="cat-btn">Categories <i class="icon-down-dir"></i></span>
+                                    <div class="cat-wrapper">
+                                        <ul class="post-categories">
+                                            <li>
+                                                <a href="{% url 'front:post_category_details' post.category.slug %}"
+                                                   rel="category tag">{{ post.category.name }}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <h2 class="entry-title"><a href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h2>
+                            </div>
+                            <div class="post-footer">
+                                <div class="post-links">
+                                    <i class="icon-doc-text"></i><a href="{% url 'front:post_details' post.slug %}"
+                                                                    class="post-more">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</body>
+{% endblock %}

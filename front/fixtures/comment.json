@@ -1,0 +1,22 @@
+[
+  {
+    "model": "front.comment",
+    "pk": 1,
+    "fields": {
+      "name": "Edward",
+      "email": "edward03@gmail.com",
+      "time": "2020-05-15T19:31:00Z",
+      "contain": "Wow so interesting information. Thank you !"
+    }
+  },
+  {
+    "model": "front.comment",
+    "pk": 2,
+    "fields": {
+      "name": "Anna",
+      "email": "z_anna5@mail.ru",
+      "time": "2020-05-30T10:20:00Z",
+      "contain": "It is so amazing idea !"
+    }
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "model": "front.socialaccounts",
+    "pk": 1,
+    "fields": {
+      "icon_name": "facebook",
+      "url": "https://www.facebook.com/"
+    }
+  },
+  {
+    "model": "front.socialaccounts",
+    "pk": 2,
+    "fields": {
+      "icon_name": "gplus",
+      "url": "https://myaccount.google.com/"
+    }
+  },
+  {
+    "model": "front.socialaccounts",
+    "pk": 3,
+    "fields": {
+      "icon_name": "twitter",
+      "url": "https://twitter.com/"
+    }
+  },
+  {
+    "model": "front.socialaccounts",
+    "pk": 4,
+    "fields": {
+      "icon_name": "vimeo",
+      "url": "https://vimeo.com/"
+    }
+  },
+  {
+    "model": "front.socialaccounts",
+    "pk": 5,
+    "fields": {
+      "icon_name": "play",
+      "url": "https://www.youtube.com/"
+    }
+  },
+  {
+    "model": "front.socialaccounts",
+    "pk": 6,
+    "fields": {
+      "icon_name": "flickr",
+      "url": "https://www.flickr.com/"
+    }
+  },
+  {
+    "model": "front.socialaccounts",
+    "pk": 7,
+    "fields": {
+      "icon_name": "pinterest",
+      "url": "https://www.pinterest.com/"
+    }
+  },
+  {
+    "model": "front.socialaccounts",
+    "pk": 8,
+    "fields": {
+      "icon_name": "instagram",
+      "url": "https://www.instagram.com/"
+    }
+  },
+  {
+    "model": "front.socialaccounts",
+    "pk": 9,
+    "fields": {
+      "icon_name": "behance",
+      "url": "https://www.behance.net/"
+    }
+  }
+]

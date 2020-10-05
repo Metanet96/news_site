@@ -1,0 +1,275 @@
+{% extends 'front/layouts/base.html' %}
+{% block main %}
+<body class="archive category with_aside aside_right layout-full-width header-stack header-magazine minimalist-header sticky-header sticky-white ">
+<!-- Main Content -->
+<div id="Content">
+    <div class="content_wrapper clearfix">
+        <div class="sections_group">
+            <div class="extra_content">
+            </div>
+            <div class="section">
+                <div class="section_wrapper clearfix">
+                    <!--  Filter Area -->
+                    <div id="Filters" class="column one ">
+                        <ul class="filters_buttons">
+                            <li class="label">
+                                Filter by
+                            </li>
+                            <li class="categories">
+                                <a class="open" href="#"><i class="icon-docs"></i>Categories<i
+                                        class="icon-down-dir"></i></a>
+                            </li>
+                            <li class="tags">
+                                <a class="open" href="#"><i class="icon-tag"></i>Tags<i class="icon-down-dir"></i></a>
+                            </li>
+                            <li class="authors">
+                                <a class="open" href="#"><i class="icon-user"></i>Authors<i
+                                        class="icon-down-dir"></i></a>
+                            </li>
+                            <li class="reset">
+                                <a class="close" data-rel="*" href="{% url 'front:posts' %}"><i class="icon-cancel"></i>Show
+                                    all</a>
+                            </li>
+                        </ul>
+                        <div class="filters_wrapper">
+                            <ul class="categories">
+                                {% for category in category_list_right %}
+                                <li>
+                                    <a href="{% url 'front:post_category_details' category.slug %}"><span>{{ category.name }}</span></a>
+                                </li>
+                                {% endfor %}
+                                <li class="close">
+                                    <a href="#"><i class="icon-cancel"></i></a>
+                                </li>
+                            </ul>
+                            <ul class="tags">
+                                <li>
+                                    <a data-rel=".tag-design" href="#">Design</a>
+                                </li>
+                                <li>
+                                    <a data-rel=".tag-framework" href="#">Framework</a>
+                                </li>
+                                <li>
+                                    <a data-rel=".tag-grid" href="#">Grid</a>
+                                </li>
+                                <li>
+                                    <a data-rel=".tag-motion" href="#">Motion</a>
+                                </li>
+                                <li>
+                                    <a data-rel=".tag-themeforest" href="#">Themeforest</a>
+                                </li>
+                                <li>
+                                    <a data-rel=".tag-video" href="#">Video</a>
+                                </li>
+                                <li>
+                                    <a data-rel=".tag-wordpress" href="#">Wordpress</a>
+                                </li>
+                                <li class="close">
+                                    <a href="#"><i class="icon-cancel"></i></a>
+                                </li>
+                            </ul>
+                            <ul class="authors">
+                                {% for author in author_lists %}
+                                <li>
+                                    <a href="{% url 'front:post_author_details' author.author %}"><span>{{ author.author }}</span></a>
+                                </li>
+                                {% endfor %}
+                                <li class="close">
+                                    <a href="#"><i class="icon-cancel"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- One full width row-->
+                    <div class="column one column_blog">
+                        <div class="blog_wrapper isotope_wrapper">
+                            <div class="posts_group lm_wrapper classic">
+                                {% for post in category_posts %}
+                                <div class="post-2291 post  format-standard has-post-thumbnail  category-lifestyle  post-item isotope-item clearfix">
+                                    <div class="date_label">
+                                        {{ post.time }}
+                                    </div>
+                                    <div class="image_frame post-photo-wrapper scale-with-grid">
+                                        <div class="image_wrapper">
+                                            {% if post.picture %}
+                                            <a href="{% url 'front:post_details' post.slug %}">
+                                                <div class="mask"></div>
+                                                <img width="576" height="450" src="{{ post.picture.url }}"
+                                                     class="scale-with-grid wp-post-image" alt="{{ post.title }}"/>
+                                            </a>
+                                            <div class="image_links double">
+                                                <a href="{{ post.picture.url }}" class="zoom" rel="prettyphoto"><i
+                                                        class="icon-search"></i></a><a
+                                                    href="{% url 'front:post_details' post.slug %}" class="link"><i
+                                                    class="icon-link"></i></a>
+                                            </div>
+                                            {% else %}
+                                            <a href="{% url 'front:post_details' post.slug %}">
+                                                <div class="mask"></div>
+                                                <img width="576" height="450"
+                                                     src="../../../static/front/press/images/home_press_blog_11-576x450.jpg"
+                                                     class="scale-with-grid wp-post-image" alt="home_press_blog_11"/>
+                                            </a>
+                                            <div class="image_links double">
+                                                <a href="../../../static/front/press/images/home_press_blog_11.jpg"
+                                                   class="zoom" rel="prettyphoto"><i class="icon-search"></i></a><a
+                                                    href="{% url 'front:post_details' post.slug %}" class="link"><i
+                                                    class="icon-link"></i></a>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="post-desc-wrapper">
+                                        <div class="post-desc">
+                                            <div class="post-meta clearfix">
+                                                <div class="author-date">
+                                                    <span class="author"><span>Published by </span><i
+                                                            class="icon-user"></i> <a
+                                                            href="{% url 'front:post_author_details' post.author %}">{{ post.author }}</a>
+                                                    </span>
+                                                    <span class="date"><span> at </span><i
+                                                        class="icon-clock"></i> {{ post.time }}</span>
+                                                </div>
+                                                <div class="category">
+                                                    <span class="cat-btn">Categories <i
+                                                            class="icon-down-dir"></i></span>
+                                                    <div class="cat-wrapper">
+                                                        <ul class="post-categories">
+                                                            <li>
+                                                                <a href="{% url 'front:post_category_details' post.category.slug %}"
+                                                                   rel="category tag">{{ post.category }}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="post-title">
+                                                <h2 class="entry-title"><a
+                                                        href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h2>
+                                            </div>
+                                            <div class="post-footer">
+                                                <div class="post-links">
+                                                    <i class="icon-doc-text"></i><a
+                                                        href="{% url 'front:post_details' post.slug %}"
+                                                        class="post-more">Read more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="paginator">
+                                <div class="pager">
+                                    <div class="pages">
+                                        {% if category_posts.has_previous %}
+                                        <a href="?page=1">&laquo; </a>
+                                        <a href="?page={{ category_posts.previous_page_number }}">Prev</a>
+                                        {% endif %}
+
+                                        {% for page_num in paginator.page_range %}
+                                        {% if page_num == category_posts.number %}
+                                        <b><i> {{ category_posts.number }} </i></b>
+                                        {% else %}
+                                        <a href="?page={{ page_num }}"> {{ page_num }}</a>
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% if category_posts.has_next %}
+                                        <a href="?page={{ category_posts.next_page_number }}">Next </a>
+                                        <a href="?page={{ category_posts.paginator.num_pages }}"> &raquo;</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="four columns">
+            <div class="widget-area clearfix ">
+                <!-- Search form-->
+                <aside id="search-4" class="widget widget_search">
+                    <form id="searchform" action="{% url 'front:search_results' %}" method="get">
+                        <input type="text" name="q" placeholder="Enter you search"/>
+                        <input type="submit" class="submit"/>
+                    </form>
+                </aside>
+                <!-- Text Area -->
+                <aside id="text-8" class="widget widget_text">
+                    <h3>FIND US</h3>
+                    <div class="textwidget">
+                        {% for account in social_accounts %}
+                        <a href="{{ account.url }}"
+                           class="icon_bar icon_bar_{{ account.icon_name }} icon_bar_small"><span class="t"><i
+                                class="icon-{{ account.icon_name }}"></i></span><span class="b"><i
+                                class="icon-{{ account.icon_name }}"></i></span></a>
+                        {% endfor %}
+                    </div>
+                </aside>
+                <!-- Categories Area -->
+                <aside id="categories-4" class="widget widget_categories">
+                    <h3>CATEGORIES</h3>
+                    <ul>
+                        {% for category in category_list_right %}
+                        <li>
+                            <a href="{% url 'front:post_category_details' category.slug %}"><span>{{ category.name }}</span></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </aside>
+                <!-- Recent posts -->
+                <aside id="widget_mfn_recent_posts-4" class="widget widget_mfn_recent_posts">
+                    <h3>LATEST POSTS</h3>
+                    <div class="Recent_posts">
+                        <ul>
+                            {% for post in nexts %}
+                            <li class="post  format-standard has-post-thumbnail    ">
+                                <a href="{% url 'front:post_details' post.slug %}">
+                                    <div class="desc" style="width:95%">
+                                        <h6>{{ post.title }}</h6><span class="date"><i class="icon-clock"></i>{{ post.time }}</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </aside>
+                <!-- Recent Comments Area -->
+                <aside id="widget_mfn_recent_comments-4" class="widget widget_mfn_recent_comments">
+                    <h3>RECENT COMMENTS</h3>
+                    <div class="Recent_comments">
+                        <ul>
+                            {% for comment in comments %}
+                            <li>
+                                <span class="date_label">{{ comment.time }}</span>
+                                <p>
+                                    <i class="icon-user"></i><strong>{{ comment.name }}</strong> {{ comment.contain }}
+                                </p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </aside>
+                <!--Tag Cloud -->
+                <aside id="tag_cloud-3" class="widget widget_tag_cloud">
+                    <h3>TAGS</h3>
+                    <div class="tagcloud">
+                        <a href='#' class='tag-link-11' title='2 topics' style='font-size: 13.25pt;'>Design</a><a
+                            href='#' class='tag-link-12' title='2 topics' style='font-size: 13.25pt;'>Framework</a><a
+                            href='#' class='tag-link-17' title='1 topic' style='font-size: 8pt;'>Grid</a><a href='#'
+                                class='tag-link-16'
+                                title='2 topics'
+                                style='font-size: 13.25pt;'>Motion</a><a
+                            href='#' class='tag-link-13' title='3 topics' style='font-size: 16.75pt;'>Themeforest</a><a
+                            href='#' class='tag-link-15' title='3 topics' style='font-size: 16.75pt;'>Video</a><a
+                            href='#' class='tag-link-14' title='5 topics' style='font-size: 22pt;'>Wordpress</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

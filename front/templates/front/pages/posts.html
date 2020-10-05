@@ -1,0 +1,648 @@
+{% extends 'front/layouts/base.html' %}
+{% block main %}
+<body class="with_aside aside_right layout-full-width header-stack header-magazine minimalist-header sticky-header sticky-white hide-title-area no-content-padding">
+<!-- Main Content -->
+<div id="Content">
+    <div class="content_wrapper clearfix">
+        <div class="sections_group">
+            <div class="entry-content">
+                <div class="section" style="padding-top:10px; padding-bottom:0px; ">
+                    <div class="section_wrapper clearfix">
+                        <div class="items_group clearfix">
+                            <!-- One full width row-->
+                            <div class="column one column_column">
+                                <div class="column_attr ">
+                                    <div id="rev_slider_1_1_wrapper"
+                                         class="rev_slider_wrapper fullwidthbanner-container sections_style_1">
+                                        <div id="rev_slider_1_1" class="rev_slider fullwidthabanner"
+                                             data-version="5.0.4.1">
+                                            <ul>
+                                                <li data-index="rs-1" data-transition="fade" data-slotamount="7"
+                                                    data-easein="default" data-easeout="default" data-masterspeed="300"
+                                                    data-rotate="0" data-saveperformance="off" data-title="Slide"
+                                                    data-description="">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ1wxXsdniYBgBVWJEzOjMxkzX6IVhoaTjAbw&usqp=CAU"
+                                                         alt="" width="880" height="600" data-bgposition="center top"
+                                                         data-bgfit="cover" data-bgrepeat="no-repeat"
+                                                         class="rev-slidebg" data-no-retina>
+                                                    <div class="tp-caption tp-resizeme" id="slide-1-layer-1" data-x="-1"
+                                                         data-y="80" data-width="auto" data-height="auto"
+                                                         data-transform_idle=""
+                                                         data-transform_in="x:-50px;opacity:0;s:800;e:Power3.easeInOut;"
+                                                         data-transform_out="auto:auto;s:300;" data-start="500"
+                                                         data-responsive_offset="on" style="z-index: 5;"><img
+                                                            src="../../../static/front/press/images/home_press_hot_news.png"
+                                                            alt="" width="196" height="58" data-no-retina>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="tp-bannertimer tp-bottom flv_viz_hid"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- One full width row-->
+                            <div class="column one column_blog">
+                                <div class="blog_wrapper isotope_wrapper clearfix">
+                                    <!-- Masonry blog posts -->
+                                    <div class="posts_group lm_wrapper masonry isotope">
+                                        {% for post in post_list %}
+                                        <div class="post  format-standard has-post-thumbnail     post-item isotope-item clearfix">
+                                            <div class="date_label">
+                                                {{ post.time }}
+                                            </div>
+                                            <div class="image_frame post-photo-wrapper scale-with-grid">
+                                                <div class="image_wrapper">
+                                                    {% if post.picture %}
+                                                    <a href="{% url 'front:post_details' post.slug %}">
+                                                        <div class="mask"></div>
+                                                        <img width="576" height="450" src="{{ post.picture.url }}"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="{{ post.title }}"/>
+                                                    </a>
+                                                    <div class="image_links double">
+                                                        <a href="{{ post.picture.url }}" class="zoom" rel="prettyphoto"><i
+                                                                class="icon-search"></i></a><a
+                                                            href="{% url 'front:post_details' post.slug %}"
+                                                            class="link"><i class="icon-link"></i></a>
+                                                    </div>
+                                                    {% else %}
+                                                    <a href="{% url 'front:post_details' post.slug %}">
+                                                        <div class="mask"></div>
+                                                        <img width="576" height="450"
+                                                             src="../../../static/front/press/images/home_press_blog_11-576x450.jpg"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="home_press_blog_11"/>
+                                                    </a>
+                                                    <div class="image_links double">
+                                                        <a href="../../../static/front/press/images/home_press_blog_11.jpg"
+                                                           class="zoom" rel="prettyphoto"><i
+                                                                class="icon-search"></i></a><a
+                                                            href="{% url 'front:post_details' post.slug %}"
+                                                            class="link"><i class="icon-link"></i></a>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="post-desc-wrapper">
+                                                <div class="post-desc">
+                                                    <div class="post-meta clearfix">
+                                                        <div class="author-date">
+                                                                        <span class="author"><span>Published by </span><i
+                                                                                class="icon-user"></i> <a
+                                                                                href="{% url 'front:post_author_details' post.author %}">{{ post.author }}</a>
+                                                                        </span><span class="date"><span> at </span><i
+                                                                class="icon-clock"></i> {{ post.time }}</span>
+                                                        </div>
+                                                        <div class="category">
+                                                            <span class="cat-btn">Categories <i
+                                                                    class="icon-down-dir"></i></span>
+                                                            <div class="cat-wrapper">
+                                                                <ul class="post-categories">
+                                                                    <li>
+                                                                        <a href="{% url 'front:post_category_details' post.category.slug %}"
+                                                                           rel="category tag">{{ post.category }}</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-title">
+                                                        <h2 class="entry-title"><a
+                                                                href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h2>
+                                                    </div>
+                                                    <br>
+                                                    <div class="post-excerpt">
+                                                        For more articles about <a
+                                                            href="{% url 'front:post_category_details' post.category.slug %}">
+                                                        {{ post.category }} </a> please click here.
+                                                    </div>
+                                                    <div class="post-footer">
+                                                        <div class="post-links">
+                                                            <i class="icon-doc-text"></i><a
+                                                                href="{% url 'front:post_details' post.slug %}"
+                                                                class="post-more">Read more</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Page devider -->
+                            <!-- One full width row-->
+                            <div class="column one column_divider">
+                                <div class="hr_wide ">
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section sections_style_4">
+                    <div class="section_wrapper clearfix">
+                        <div class="items_group clearfix">
+                            <!-- Page Title-->
+                            <!-- One full width row-->
+                            <div class="column one column_fancy_heading">
+                                <div class="fancy_heading fancy_heading_icon">
+                                    <h2 class="title">RECENT NEWS</h2>
+                                </div>
+                            </div>
+                            <!-- One full width row-->
+                            <div class="column one column_blog">
+                                <div class="blog_wrapper isotope_wrapper clearfix">
+                                    <div class="posts_group lm_wrapper classic">
+                                        {% for post in recents_posts %}
+                                        <div class="post  format-standard has-post-thumbnail  post-item isotope-item clearfix">
+                                            <div class="date_label">
+                                                {{ post.time }}
+                                            </div>
+                                            <div class="image_frame post-photo-wrapper scale-with-grid">
+                                                <div class="image_wrapper">
+                                                    {% if post.picture %}
+                                                    <a href="{% url 'front:post_details' post.slug %}">
+                                                        <div class="mask"></div>
+                                                        <img width="576" height="450" src="{{ post.picture.url }}"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="{{ post.title }}"/>
+                                                    </a>
+                                                    <div class="image_links double">
+                                                        <a href="{{ post.picture.url }}" class="zoom" rel="prettyphoto"><i
+                                                                class="icon-search"></i></a><a
+                                                            href="{% url 'front:post_details' post.slug %}"
+                                                            class="link"><i class="icon-link"></i></a>
+                                                    </div>
+                                                    {% else %}
+                                                    <a href="{% url 'front:post_details' post.slug %}">
+                                                        <div class="mask"></div>
+                                                        <img width="576" height="450"
+                                                             src="../../../static/front/press/images/home_press_blog_11-576x450.jpg"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="home_press_blog_11"/>
+                                                    </a>
+                                                    <div class="image_links double">
+                                                        <a href="../../../static/front/press/images/home_press_blog_11.jpg"
+                                                           class="zoom" rel="prettyphoto"><i
+                                                                class="icon-search"></i></a><a
+                                                            href="{% url 'front:post_details' post.slug %}"
+                                                            class="link"><i class="icon-link"></i></a>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="post-desc-wrapper">
+                                                <div class="post-desc">
+                                                    <div class="post-meta clearfix">
+                                                        <div class="author-date">
+                                                                    <span class="author"><span>Published by </span><i
+                                                                            class="icon-user"></i> <a
+                                                                            href="{% url 'front:post_author_details' post.author %}">{{ post.author }}</a>
+                                                                    </span><span class="date"><span> at </span><i
+                                                                class="icon-clock"></i> {{ post.time }}</span>
+                                                        </div>
+                                                        <div class="category">
+                                                            <span class="cat-btn">Categories <i
+                                                                    class="icon-down-dir"></i></span>
+                                                            <div class="cat-wrapper">
+                                                                <ul class="post-categories">
+                                                                    <li>
+                                                                        <a href="{% url 'front:post_category_details' post.category.slug %}"
+                                                                           rel="category tag">{{ post.category }}</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-title">
+                                                        <h2 class="entry-title"><a
+                                                                href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h2>
+                                                    </div>
+                                                    <div class="post-excerpt">
+                                                        <p class="big">
+                                                            If you want {{ post.author }}'s article please click next
+                                                            link.
+                                                        </p>
+                                                    </div>
+                                                    <div class="post-footer">
+                                                        <div class="post-links">
+                                                            <i class="icon-doc-text"></i><a
+                                                                href="{% url 'front:post_details' post.slug %}"
+                                                                class="post-more">Read more</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Page devider -->
+                            <!-- One full width row-->
+                            <div class="column one column_divider">
+                                <div class="hr_wide ">
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section sections_style_4">
+                    <div class="section_wrapper clearfix">
+                        <div class="items_group clearfix">
+                            <!-- One full width row-->
+                            <div class="column one column_blog_slider">
+                                <div class="blog_slider clearfix ">
+                                    <div class="blog_slider_header">
+                                        {% for post in sport_posts1 %}
+                                        <h4 class="title"><a
+                                                href="{% url 'front:post_category_details' post.category.slug %}">{{ post.category }} </a></h4>
+                                        <a class="button button_js slider_prev"
+                                                                         href="#"><span class="button_icon"><i
+                                            class="icon-left-open-big"></i></span></a><a
+                                            class="button button_js slider_next" href="#"><span class="button_icon"><i
+                                            class="icon-right-open-big"></i></span></a>
+                                        {% endfor %}
+                                    </div>
+                                    <ul class="blog_slider_ul">
+                                        <li class="post  format-standard has-post-thumbnail ">
+                                            {% for post in sport_posts1 %}
+                                            <div class="item_wrapper">
+                                                <div class="image_frame scale-with-grid">
+                                                    <div class="image_wrapper">
+                                                        {% if post.picture %}
+                                                        <img width="576" height="450" src="{{ post.picture.url }}"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="{{ post.title }}"/>
+                                                        {% else %}
+                                                        <img width="576" height="450"
+                                                             src="../../../static/front/press/images/home_press_blog_8-576x450.jpg"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="home_press_blog_8"/>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="date_label">
+                                                    {{ post.time }}
+                                                </div>
+                                                <div class="desc">
+                                                    <h4><a href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h4>
+                                                    <hr class="hr_color"/>
+                                                    <a href="{% url 'front:post_details' post.slug %}"
+                                                       class="button button_left button_js"><span class="button_icon"><i
+                                                            class="icon-layout"></i></span><span class="button_label">Read more</span></a>
+                                                </div>
+                                            </div>
+                                            {% endfor%}
+                                        </li>
+                                        <li class="post-2285 post  format-standard has-post-thumbnail  category-sport ">
+                                            {% for post in sport_posts2 %}
+                                            <div class="item_wrapper">
+                                                <div class="image_frame scale-with-grid">
+                                                    <div class="image_wrapper">
+                                                        {% if post.picture %}
+                                                        <img width="576" height="450" src="{{ post.picture.url }}"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="{{ post.title }}"/>
+                                                        {% else %}
+                                                        <img width="576" height="450"
+                                                             src="../../../static/front/press/images/home_press_blog_8-576x450.jpg"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="home_press_blog_8"/>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="date_label">
+                                                    {{ post.time }}
+                                                </div>
+                                                <div class="desc">
+                                                    <h4><a href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h4>
+                                                    <hr class="hr_color"/>
+                                                    <a href="{% url 'front:post_details' post.slug %}"
+                                                       class="button button_left button_js"><span class="button_icon"><i
+                                                            class="icon-layout"></i></span><span class="button_label">Read more</span></a>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </li>
+                                        <li class="post-2287 post  format-standard has-post-thumbnail  category-sport">
+                                            {% for post in sport_posts3 %}
+                                            <div class="item_wrapper">
+                                                <div class="image_frame scale-with-grid">
+                                                    <div class="image_wrapper">
+                                                        {% if post.picture %}
+                                                        <img width="576" height="450" src="{{ post.picture.url }}"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="{{ post.title }}"/>
+                                                        {% else %}
+                                                        <img width="576" height="450"
+                                                             src="../../../static/front/press/images/home_press_blog_8-576x450.jpg"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="home_press_blog_8"/>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="date_label">
+                                                    {{ post.time }}
+                                                </div>
+                                                <div class="desc">
+                                                    <h4><a href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h4>
+                                                    <hr class="hr_color"/>
+                                                    <a href="{% url 'front:post_details' post.slug %}"
+                                                       class="button button_left button_js"><span class="button_icon"><i
+                                                            class="icon-layout"></i></span><span class="button_label">Read more</span></a>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </li>
+                                        <li class="post-2289 post  format-standard has-post-thumbnail  category-sport">
+                                            {% for post in sport_posts4 %}
+                                            <div class="item_wrapper">
+                                                <div class="image_frame scale-with-grid">
+                                                    <div class="image_wrapper">
+                                                        {% if post.picture %}
+                                                        <img width="576" height="450" src="{{ post.picture.url }}"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="{{ post.title }}"/>
+                                                        {% else %}
+                                                        <img width="576" height="450"
+                                                             src="../../../static/front/press/images/home_press_blog_8-576x450.jpg"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="home_press_blog_8"/>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="date_label">
+                                                    {{ post.time }}
+                                                </div>
+                                                <div class="desc">
+                                                    <h4><a href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h4>
+                                                    <hr class="hr_color"/>
+                                                    <a href="{% url 'front:post_details' post.slug %}"
+                                                       class="button button_left button_js"><span class="button_icon"><i
+                                                            class="icon-layout"></i></span><span class="button_label">Read more</span></a>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </li>
+                                    </ul>
+                                    <div class="slider_pagination"></div>
+                                </div>
+                            </div>
+                            <!-- One full width row-->
+                            <div class="column one column_column">
+                                <div class="column_attr align_center">
+                                    <a href="#"> <img class="scale-with-grid"
+                                                      src="../../../static/front/press/images/720x90.gif" alt=""> </a>
+                                </div>
+                            </div>
+                            <!-- Page devider -->
+                            <!-- One full width row-->
+                            <div class="column one column_divider">
+                                <div class="hr_wide ">
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section sections_style_4">
+                    <div class="section_wrapper clearfix">
+                        <div class="items_group clearfix">
+                            <!-- One full width row-->
+                            <div class="column one column_blog_slider">
+                                <div class="blog_slider clearfix ">
+                                    <div class="blog_slider_header">
+                                        {% for post in style_posts %}
+                                        <h4 class="title"><a
+                                                href="{% url 'front:post_category_details' post.category.slug %}">{{ post.category }} </a></h4>
+                                        <a class="button button_js slider_prev"
+                                                                         href="#"><span class="button_icon"><i
+                                            class="icon-left-open-big"></i></span></a><a
+                                            class="button button_js slider_next" href="#"><span class="button_icon"><i
+                                            class="icon-right-open-big"></i></span></a>
+                                        {% endfor %}
+                                    </div>
+                                    <ul class="blog_slider_ul">
+                                        {% for post in style_posts %}
+                                        <li class="post  format-standard has-post-thumbnail ">
+                                            <div class="item_wrapper">
+                                                <div class="image_frame scale-with-grid">
+                                                    <div class="image_wrapper">
+                                                        {% if post.picture %}
+                                                        <img width="576" height="450" src="{{ post.picture.url }}"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="{{ post.title }}"/>
+                                                        {% else %}
+                                                        <img width="576" height="450"
+                                                             src="../../../static/front/press/images/home_press_blog_8-576x450.jpg"
+                                                             class="scale-with-grid wp-post-image"
+                                                             alt="home_press_blog_8"/>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="date_label">
+                                                    {{ post.time }}
+                                                </div>
+                                                <div class="desc">
+                                                    <h4><a href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h4>
+                                                    <hr class="hr_color"/>
+                                                    <a href="{% url 'front:post_details' post.slug %}"
+                                                       class="button button_left button_js"><span class="button_icon"><i
+                                                            class="icon-layout"></i></span><span class="button_label">Read more</span></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <div class="slider_pagination"></div>
+                                </div>
+                            </div>
+                            <!-- Page devider -->
+                            <!-- One full width row-->
+                            <div class="column one column_divider">
+                                <div class="hr_wide ">
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section sections_style_4">
+                    <div class="section_wrapper clearfix">
+                        <div class="items_group clearfix">
+                            <!-- One full width row-->
+                            <div class="column one column_column">
+                                <div class="column_attr ">
+                                    <h2>MORE ARTICLES</h2>
+                                </div>
+                            </div>
+                            <!-- One Third (1/3) Column -->
+                            {% for post in more_posts %}
+                            <div class="column one-third column_photo_box">
+                                <div class="photo_box ">
+                                    <h4><a href="{% url 'front:post_category_details' post.category.slug %}">{{ post.category }}</a> article</h4>
+                                    <div class="image_frame">
+                                        <div class="image_wrapper">
+                                            <div class="mask"></div>
+                                            {% if post.picture %}
+                                            <img class="scale-with-grid" src="{{ post.picture.url }}"
+                                                 alt="{{ post.title }}"/>
+                                            {% else %}
+                                            <img class="scale-with-grid"
+                                                 src="../../../static/front/press/images/home_press_blog_16.jpg"
+                                                 alt=" Etiam malesuada ultricies"/>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="date_label">
+                                        {{ post.time }}
+                                    </div>
+                                    <div class="desc">
+                                        <p>
+                                            {{ post.title }}
+                                        </p>
+                                        <a href="{% url 'front:post_details' post.slug %}">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Sidebar area-->
+        <div class="sidebar sidebar-1 four columns">
+            <div class="widget-area clearfix ">
+                <!-- Search form-->
+                <aside class="widget widget_search">
+                    <form id="searchform" action="{% url 'front:search_results' %}" method="get">
+                        <input type="text" name="q" placeholder="Enter you search"/>
+                        <input type="submit" class="submit"/>
+                    </form>
+                </aside>
+                <!-- Text Area -->
+                <aside class="widget widget_text">
+                    <h3>FIND US</h3>
+                    <div class="textwidget">
+                        {% for account in social_accounts %}
+                        <a href="{{ account.url }}"
+                           class="icon_bar icon_bar_{{ account.icon_name }} icon_bar_small"><span class="t"><i
+                                class="icon-{{ account.icon_name }}"></i></span><span class="b"><i
+                                class="icon-{{ account.icon_name }}"></i></span></a>
+                        {% endfor %}
+                    </div>
+                </aside>
+                <!-- Categories Area -->
+                <aside class="widget widget_categories">
+                    <h3>CATEGORIES</h3>
+                    <ul>
+                        {% for category in category_list_right %}
+                        <li>
+                            <a href="{% url 'front:post_category_details' category.slug %}"><span>{{ category.name }}</span></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </aside>
+                <!-- Text Area -->
+                <aside class="widget widget_text">
+                    <h3>OUR MAGAZINE</h3>
+                    <div class="textwidget">
+                        Vitae adipiscing turpis. Aenean ligula nibh in, molestie id viverra a, dapibus at dolor. Aenean
+                        ligula nibh in molestie id.
+                    </div>
+                </aside>
+                <!-- Recent posts -->
+                <aside class="widget widget_mfn_recent_posts">
+                    <h3>OTHER POSTS</h3>
+                    <div class="Recent_posts">
+                        <ul>
+                            {% for post in nexts %}
+                            <li class="post  format-standard has-post-thumbnail    ">
+                                <a href="{% url 'front:post_details' post.slug %}">
+                                    <div class="desc" style="width:95%">
+                                        <h6>{{ post.title }}</h6><span class="date"><i class="icon-clock"></i>{{ post.time }}</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </aside>
+                <!-- Text Area -->
+                <aside class="widget widget_text">
+                    <h3>ADVERT</h3>
+                    <div class="textwidget">
+                        <div style="line-height: 0;">
+                            <a href="#"><img src="../../../static/front/press/images/250x250.gif" alt="">
+                            </a>
+                            <a style="opacity: 0.85" href="#"><img src="../../../static/front/press/images/125x125.gif"
+                                                                   alt="">
+                            </a>
+                            <a href="#"><img src="../../../static/front/press/images/125x125.gif" alt="">
+                            </a>
+                            <a href="#"><img src="../../../static/front/press/images/125x125.gif" alt="">
+                            </a>
+                            <a style="opacity: 0.85" href="#"><img src="../../../static/front/press/images/125x125.gif"
+                                                                   alt="">
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+                <!-- Text Area -->
+                <aside class="widget widget_text">
+                    <div class="textwidget">
+                        <div style="border: 3px solid #ff0000; padding: 30px 20px 15px; text-align: center;">
+                            <h3 style="margin-bottom: 25px;">SIGN UP FOR
+                                <br>
+                                NEWSLETTER</h3>
+                            <p style="margin-bottom: 25px;">
+                                Aenean ligula nibh, mole stie id viverra a, dapibus ante lobortis
+                            </p>
+                            <a class="button button_theme button_js" href="#"><span
+                                    class="button_label">Subscribe</span></a>
+                        </div>
+                    </div>
+                </aside>
+                <!-- Recent Comments Area -->
+                <aside class="widget widget_mfn_recent_comments">
+                    <h3>RECENT COMMENTS</h3>
+                    <div class="Recent_comments">
+                        <ul>
+                            {% for comment in comments %}
+                            <li>
+                                <span class="date_label">{{ comment.time }}</span>
+                                <p>
+                                    <i class="icon-user"></i><strong>{{ comment.name }}</strong> {{ comment.contain }}
+                                </p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </aside>
+                <!--Tag Cloud -->
+                <aside class="widget widget_tag_cloud">
+                    <h3>TAGS</h3>
+                    <div class="tagcloud">
+                        <a href='#' class='tag-link-11' title='2 topics' style='font-size: 13.25pt;'>Design</a><a
+                            href='#' class='tag-link-12' title='2 topics' style='font-size: 13.25pt;'>Framework</a><a
+                            href='#' class='tag-link-17' title='1 topic' style='font-size: 8pt;'>Grid</a><a href='#'
+                                class='tag-link-16'
+                                title='2 topics'
+                                style='font-size: 13.25pt;'>Motion</a><a
+                            href='#' class='tag-link-13' title='3 topics' style='font-size: 16.75pt;'>Themeforest</a><a
+                            href='#' class='tag-link-15' title='3 topics' style='font-size: 16.75pt;'>Video</a><a
+                            href='#' class='tag-link-14' title='5 topics' style='font-size: 22pt;'>Wordpress</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

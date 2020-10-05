@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOG İN</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="csrf" content="{{ csrf_token }}"/>
+
+</head>
+<body style="background-color: #FCFCFC;">
+<div >
+     {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+<br><br><br><br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4  mx-auto" style="background: rgba(0, 0, 0, .01); border-radius:3px; padding:1rem;">
+                <form method="post">
+                     {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username" class="control-label">Username</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <i class="fa fa-user icon" style="padding: 10px; background: #DC143C;color: white;text-align: center;min-width: 50px;" ></i>
+                            </div>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" required />
+                        </div>
+                        {{ form.username.errors }}
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Password</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <i class="fa fa-key icon" style="padding: 10px; background: #DC143C;color: white;text-align: center;min-width: 50px;"></i>
+                            </div>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
+                        </div>
+                        {{ form.user_pass.errors }}
+                    </div>
+                    <button type="submit" class="btn btn-outline-danger btn-block">Log In</button> <br>
+                    <a href="{% url 'front:auth_sign_in' %}" class="btn btn-outline-dark" style="margin-left:255px">Sign up</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

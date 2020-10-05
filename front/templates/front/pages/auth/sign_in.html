@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOG İN</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="csrf" content="{{ csrf_token }}"/>
+
+</head>
+<body style="background-color: #FCFCFC;">
+<div >
+     {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4  mx-auto" style="background: rgba(0, 0, 0, .01); border-radius:3px; padding:1rem;">
+            <h2>Sign up</h2>
+            <form method="post">
+                {% csrf_token %}
+                    {% for field in form %}
+                        <p>
+                            {{ field.label_tag }}<br>
+                            {{ field }}
+                            {% if field.help_text %}
+                              <small style="color: grey">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                              <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                        </p>
+                    {% endfor %}
+                    <button type="submit" class="btn  btn-secondary btn-block" >Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>

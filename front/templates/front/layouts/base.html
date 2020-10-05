@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7 "> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>
+<html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>BePress</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../../../static/front/press/images/favicon.ico">
+
+    <!-- FONTS -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:100,300,400,400italic,700'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Patua+One:100,300,400,400italic,700'>
+
+    <!-- CSS -->
+    <link rel='stylesheet' href='../../../static/front/css/global.css'>
+    <link rel='stylesheet' href='../../../static/front/press/css/structure.css'>
+    <link rel='stylesheet' href='../../../static/front/press/css/press.css'>
+    <link rel='stylesheet' href='../../../static/front/press/css/custom.css'>
+    {% block style %}
+    {% endblock %}
+    <meta name="csrf" content="{{ csrf_token }}"/>
+
+</head>
+
+<body>
+<div>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}
+                <script>alert("{{ message }}")</script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+<!-- Main Theme Wrapper -->
+<div id="Wrapper">
+    <!-- Header Wrapper -->
+    <div id="Header_wrapper">
+        <!-- Header -->
+        <header id="Header">
+            <!-- Header Top -  Info Area -->
+            <div id="Action_bar">
+                <div class="container">
+                    <div class="column one">
+                        <!-- Header - contact info area-->
+                        <ul class="contact_details">
+                            <li class="slogan">
+                                Have any questions?
+                            </li>
+                            <li class="phone">
+                                <i class="icon-phone"></i><a href="tel:+61383766284">+61 383 766 284</a>
+                            </li>
+                            <li class="mail">
+                                <i class="icon-mail-line"></i><a
+                                    href="mailto:noreply@bepress.com">noreply@bepress.com</a>
+                            </li>
+                        </ul>
+                        <!--Social info area-->
+                        <ul class="social">
+                            {% for account in all_social_accounts %}
+                            <li class="{{ account.icon_name }}">
+                                <a href="{{ account.url }}"><i class="icon-{{ account.icon_name }}"></i></a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Header -  Logo and Menu area -->
+            <div id="Top_bar">
+                <div class="container">
+                    <div class="column one">
+                        <div class="top_bar_left clearfix">
+                            <!-- Logo-->
+                            <div class="logo">
+                                <a id="logo" href="{% url 'front:index' %}" title="BePress - BeTheme"><img
+                                        class="scale-with-grid" src="../../../static/front/press/images/press.png"
+                                        alt="BePress - BeTheme"/>
+                                </a>
+                            </div>
+                            <!-- Main menu-->
+                            <div class="menu_wrapper">
+                                <nav id="menu">
+                                    <ul id="menu-main-menu" class="menu">
+                                        <li class="current_page_item post-parent">
+                                            <a href="{% url 'front:index' %}"><span>Home</span></a>
+                                        </li>
+
+                                        {% for category in category_list_menu %}
+                                        <li>
+                                            <a href="{% url 'front:post_category_details' category.slug %}"><span>{{ category.name }}</span></a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                                <a class="responsive-menu-toggle" href="#"><i class="icon-menu"></i></a>
+                            </div>
+                            <!-- Secondary menu area - only for certain pages -->
+                            <div class="secondary_menu_wrapper"></div>
+                            <!-- Banner area - only for certain pages-->
+                            <div class="banner_wrapper">
+                                <a href="#" target="_blank"><img src="../../../static/front/press/images/468x60.gif"
+                                                                 alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--Subheader area - only for certain pages -->
+        <div id="Subheader">
+            <div class="container">
+                <div class="column one">
+                    <h1 class="title">BE PRESS LATEST NEWS</h1>
+                    <!--BreadCrumbs area-->
+                    <ul class="breadcrumbs">
+                        <li>
+                            <a href="{% url 'front:index' %}">Home</a><span><i class="icon-right-open"></i></span>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'front:add_posts' %}">Add posts</a><span><i
+                                class="icon-right-open"></i></span>
+                        </li>
+                        <li>
+                            <a href="{% url 'front:auth_sign_out' %}">Log out</a><span><i
+                                class="icon-right-open"></i></span>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block main %}
+    {% endblock %}
+    <!-- Footer-->
+    <footer id="Footer" class="clearfix">
+        <!-- Footer - First area -->
+        <div class="footer_action">
+            <div class="container">
+                <!-- One full width row-->
+                <div class="column one column_column">
+                    <span>Vestibulum commodo <span class="themecolor">volutpat</span> convallis ac laoreet turpis faucibus</span>
+                </div>
+            </div>
+        </div>
+        <div class="widgets_wrapper">
+            <div class="container">
+                <div class="one-fourth column">
+                    <!-- Text Area -->
+                    <aside id="text-7" class="widget widget_text">
+                        <div class="textwidget"><img src="../../../static/front/press/images/logo_footer.png" alt="">
+                            <p>
+                                <span class="big">We love who we are and we are very proud to be the part of your business</span>
+                            </p>
+                            <p>
+                                Curabitur sit amet magna quam. Praesent in libero vel <span class="tooltip"
+                                                                                            data-tooltip="Quis accumsan dolor">turpis pellentesque</span>
+                                egestas sit amet vel nunc. Nunc lobortis dui neque quis.
+                            </p>
+
+                            {% for account in social_accounts %}
+                            <a href="{{ account.url }}"
+                               class="icon_bar icon_bar_{{ account.icon_name }} icon_bar_small"><span class="t"><i
+                                    class="icon-{{ account.icon_name }}"></i></span><span class="b"><i
+                                    class="icon-{{ account.icon_name }}"></i></span></a>
+                            {% endfor %}
+                        </div>
+                    </aside>
+                </div>
+                <div class="one-fourth column">
+                    <!-- Recent Comments Area -->
+                    <aside class="widget widget_mfn_recent_comments">
+                        <h4>Recent comments</h4>
+                        <div class="Recent_comments">
+                            <ul>
+                                {% for comment in comments %}
+                                <li>
+                                    <span class="date_label">{{ comment.time }}</span>
+                                    <p>
+                                        <i class="icon-user"></i><strong>{{ comment.name }}</strong> {{ comment.contain }}
+                                    </p>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="one-fourth column">
+                    <!-- Recent posts -->
+                    <aside class="widget widget_mfn_recent_posts">
+                        <h4>Recent posts</h4>
+                        <div class="Recent_posts">
+                            <ul>
+                                {% for posts in recent_posts%}
+                                <li class="post  format-standard has-post-thumbnail    ">
+                                    <a href="{% url 'front:post_details' posts.slug %}">
+                                        <div class="desc" style="width:95%">
+                                            <h6>{{ posts.title }}</h6><span class="date"><i class="icon-clock"></i>{{ posts.time }}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="one-fourth column">
+                    <!-- Meta Links Area -->
+                    <aside id="meta-2" class="widget widget_meta">
+                        <h4>Meta</h4>
+                        <ul>
+                            <li>
+                                <a href="{% url 'front:auth_log_in' %}">Log in</a>
+                            </li>
+                            <li>
+                                <a href="#">Entries <abbr title="Really Simple Syndication">RSS</abbr></a>
+                            </li>
+                            <li>
+                                <a href="#">Comments <abbr title="Really Simple Syndication">RSS</abbr></a>
+                            </li>
+                            <li>
+                                <a href="https://wordpress.org/"
+                                   title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <!-- Footer copyright-->
+        <div class="footer_copy">
+            <div class="container">
+                <div class="column one">
+                    <a id="back_to_top" href="#" class="button button_left button_js"><span class="button_icon"><i
+                            class="icon-up-open-big"></i></span></a>
+                    <div class="copyright">
+                        &copy; 2020 BePress - BeTheme. All Rights Reserved. <a target="_blank" rel="nofollow"
+                                                                               href="http://bit.ly/1M6lijQ">BeantownThemes</a>
+                    </div>
+                    <!--Social info area-->
+                    <ul class="social">
+                        {% for account in all_social_accounts %}
+                        <li class="{{ account.icon_name }}">
+                            <a href="{{ account.url }}"><i class="icon-{{ account.icon_name }}"></i></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- JS -->
+{% block js %}
+{% endblock %}
+<script src="../../../static/front/js/jquery-2.1.4.min.js"></script>
+
+<script src="../../../static/front/js/mfn.menu.js"></script>
+<script src="../../../static/front/js/jquery.plugins.js"></script>
+<script src="../../../static/front/js/jquery.jplayer.min.js"></script>
+<script src="../../../static/front/js/animations/animations.js"></script>
+<script src="../../../static/front/js/scripts.js"></script>
+
+<script>
+        jQuery(window).load(function() {
+            var retina = window.devicePixelRatio > 1 ? true : false;
+            if (retina) {
+                var retinaEl = jQuery("#logo img");
+                var retinaLogoW = retinaEl.width();
+                var retinaLogoH = retinaEl.height();
+                retinaEl.attr("src", "images/press.png").width(retinaLogoW).height(retinaLogoH)
+            }
+        });
+
+</script>
+<script>
+
+</script>
+</body>
+
+</html>

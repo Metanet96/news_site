@@ -1,0 +1,47 @@
+{% extends 'front/layouts/base.html' %}
+{% block main %}
+<body class="single single-post postid-2297 single-format-standard with_aside aside_right layout-full-width header-stack header-magazine minimalist-header sticky-header sticky-white ">
+<div class="container">
+    <div class="row">
+        <div>
+            <h3 style="margin-left: 390px; font-style: italic;font-weight: bold; color:red;"> Add new posts:</h3>
+            <main style="margin-left: 350px;">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option hidden> Select category:</option>
+                        {% for category in categories %}
+                        <option value="{{ category.pk }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select> <br><br>
+
+                    <label for="picture">Picture </label> <br>
+                    <input type="file" name="picture" id="picture"><br>
+                    {{ form.picture.errors }} <br>
+
+                    <label for="author">Author </label> <br>
+                    <input type="text" name="author" id="author"> <br>
+                    {{ form.author.errors }} <br>
+
+                    <label for="title">Title </label> <br>
+                    <input type="text" name="title" id="title"> <br>
+                    {{ form.title.errors }} <br>
+
+                    <label for="content">Content </label> <br>
+                    <textarea rows="4" name="content" id="content"></textarea> <br>
+                    {{ form.content.errors }} <br>
+
+                    <label for="time">Time </label> <br>
+                    <input type="date" name="time" id="time"> <br>
+                    {{ form.time.errors }} <br>
+
+                    <button type="submit" style="margin-left: 55px;"> ADD POST</button>
+                    <br><br><br><br>
+                </form>
+            </main>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

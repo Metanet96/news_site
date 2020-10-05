@@ -1,0 +1,52 @@
+[
+  {
+    "model": "front.category",
+    "pk": 1,
+    "fields": {
+      "name": "Sport",
+      "is_published_menu": true,
+      "is_published_right": true,
+      "slug": "sport"
+    }
+  },
+  {
+    "model": "front.category",
+    "pk": 2,
+    "fields": {
+      "name": "Technology",
+      "is_published_menu": true,
+      "is_published_right": true,
+      "slug": "technology"
+    }
+  },
+  {
+    "model": "front.category",
+    "pk": 3,
+    "fields": {
+      "name": "Style",
+      "is_published_menu": true,
+      "is_published_right": true,
+      "slug": "style"
+    }
+  },
+  {
+    "model": "front.category",
+    "pk": 4,
+    "fields": {
+      "name": "Politics",
+      "is_published_menu": false,
+      "is_published_right": true,
+      "slug": "politics"
+    }
+  },
+  {
+    "model": "front.category",
+    "pk": 5,
+    "fields": {
+      "name": "Travel",
+      "is_published_menu": true,
+      "is_published_right": true,
+      "slug": "travel"
+    }
+  }
+]

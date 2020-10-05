@@ -1,0 +1,404 @@
+{% extends 'front/layouts/base.html' %}
+{% block style %}
+{% endblock %}
+{% block main %}
+<body class="single single-post postid-2297 single-format-standard with_aside aside_right layout-full-width header-stack header-magazine minimalist-header sticky-header sticky-white ">
+<!-- Main Content -->
+<div id="Content">
+    <div class="content_wrapper clearfix">
+        <div class="sections_group">
+            <div id="post-2297" class="post-2297 post  format-standard has-post-thumbnail  category-lifestyle">
+                <div class="section section-post-header">
+                    <div class="section_wrapper clearfix">
+                        <!-- Posts Navigation -->
+                        <!-- One full width row-->
+                        <div class="column one post-nav">
+                            <a class="fixed-nav fixed-nav-next " href="{% url 'front:posts' %}"><span class="arrow"><i
+                                    class="icon-right-open-big"></i></span>
+                                <div class="photo">
+                                    <img width="80" height="80"
+                                         src="../../../static/front/press/images/home_press_blog_13-80x80.jpg"
+                                         class="attachment-blog-navi wp-post-image" alt="home_press_blog_13"/>
+                                </div>
+                                <div class="desc">
+                                    <h4>For all news please, check here</h4>
+                                </div>
+                            </a>
+                            <a class="list-nav" href="{% url 'front:posts' %}"><i class="icon-layout"></i>Show all</a>
+                        </div>
+                        <!-- Post Header-->
+                        <!-- One full width row-->
+                        <div class="column one post-header">
+                            {% for post in first_post %}
+                            {% if post.author == redactor %}
+                            <div class="title_wrapper">
+                                <h1 class="entry-title">{{ post.title }}</h1>
+                                <div class="post-meta clearfix">
+                                    <div class="author-date">
+                                        <span class="author">Published by <i class="icon-user"></i> <a
+                                                href="{% url 'front:post_author_details' post.author %}">{{ post.author }}</a></span><span
+                                            class="date"> at <i class="icon-clock"></i>
+                                                <time class="entry-date"
+                                                    datetime="2014-04-28T09:42:59+00:00">
+                                                        {{ post.time }}
+                                                    </time></span>
+                                    </div>
+                                    <div class="category meta-categories">
+                                        <span class="cat-btn">Categories <i class="icon-down-dir"></i></span>
+                                        <div class="cat-wrapper">
+                                            <ul class="post-categories">
+                                                <li>
+                                                    <a href="{% url 'front:post_category_details' post.category.slug %}"
+                                                       rel="category tag">{{ post.category }}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="category mata-tags">
+                                        <span class="cat-btn">Tags <i class="icon-down-dir"></i></span>
+                                        <div class="cat-wrapper">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif%}
+                            {% endfor %}
+                        </div>
+                        <!-- Post Featured Element (image / video / gallery)-->
+                        <!-- One full width row-->
+                        <div class="column one single-photo-wrapper">
+
+                            <div class="image_frame scale-with-grid">
+                                <div class="image_wrapper">
+                                    {% for post in first_post %}
+                                    {% if post.author == redactor %}
+                                    {% if post.picture %}
+                                    <a href="{{ post.picture.url }}" rel="prettyphoto">
+                                        <div class="mask"></div>
+                                        <img width="1200" height="480" src="{{ post.picture.url }}"
+                                             class="scale-with-grid wp-post-image" alt="{{ post.title }}"/>
+                                    </a>
+                                    <div class="image_links">
+                                        <a href="{{ post.picture.url }}" class="zoom" rel="prettyphoto"><i
+                                                class="icon-search"></i></a>
+                                    </div>
+                                    {% else %}
+                                    <a href="../../../static/front/press/images/home_press_blog_15.jpg"
+                                       rel="prettyphoto">
+                                        <div class="mask"></div>
+                                        <img width="1200" height="480"
+                                             src="../../../static/front/press/images/home_press_blog_15-1200x480.jpg"
+                                             class="scale-with-grid wp-post-image" alt="home_press_blog_15"/>
+                                    </a>
+                                    <div class="image_links">
+                                        <a href="../../../static/front/press/images/home_press_blog_15.jpg" class="zoom"
+                                           rel="prettyphoto"><i class="icon-search"></i></a>
+                                    </div>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Post Content-->
+                <div class="post-wrapper-content">
+                    <div class="entry-content">
+                        <div class="section the_content">
+                            <div class="section_wrapper">
+                                {% for post in first_post %}
+                                {% if post.author == redactor %}
+                                <div class="the_content_wrapper">
+                                    <p class="big">
+                                        {{ post.content}}
+                                    </p>
+                                    <p>
+                                        <!-- One Third (1/3) Column -->
+                                    <div class="column one-third">
+                                        <!-- Counter area-->
+                                        <div class="quick_fact animate-math">
+                                            <div class="number" data-to="35">
+                                                0
+                                            </div>
+                                            <h3 class="title">countries</h3>
+                                            <hr class="hr_narrow"/>
+                                            <div class="desc">
+                                                It is a long established fact that a reader will be distracted by the
+                                                readable content of a page when looking at its layout.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- One Third (1/3) Column -->
+                                    <div class="column one-third">
+                                        <!-- Counter area-->
+                                        <div class="quick_fact animate-math">
+                                            <div class="number" data-to="142">
+                                                0
+                                            </div>
+                                            <h3 class="title">articles</h3>
+                                            <hr class="hr_narrow"/>
+                                            <div class="desc">
+                                                The point of using Lorem Ipsum is that it has a more-or-less normal
+                                                distribution of letters, as opposed to using 'Content here', making it
+                                                look like readable English.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- One Third (1/3) Column -->
+                                    <div class="column one-third">
+                                        <!-- Counter area-->
+                                        <div class="quick_fact animate-math">
+                                            <div class="number" data-to="89">
+                                                0
+                                            </div>
+                                            <h3 class="title">projects</h3>
+                                            <hr class="hr_narrow"/>
+                                            <div class="desc">
+                                                Various versions have evolved over the years, sometimes by accident,
+                                                sometimes on purpose (injected humour and the like).
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </p>
+                                    <div class="hr_dots hrmargin_b_30">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section section-post-footer">
+                        <div class="section_wrapper clearfix">
+                            <!-- One full width row-->
+                            <div class="column one post-pager"></div>
+                        </div>
+                    </div>
+                    <!--Author Info Area-->
+                    <div class="section section-post-about">
+                        <div class="section_wrapper clearfix">
+                            <!-- One full width row-->
+                            <div class="column one author-box">
+                                <div class="author-box-wrapper">
+                                    <div class="avatar-wrapper">
+                                        <img alt='admin'
+                                             src='http://0.gravatar.com/avatar/057e2eb392b95a2ecfc9d32d554e3917?s=64&amp;d=http:%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G'
+                                             class='avatar avatar-64 photo' height='64' width='64'/>
+                                    </div>
+                                    {% for post in first_post%}
+                                    {% if post.author == redactor %}
+                                    <div class="desc-wrapper">
+                                        <h5><a href="{% url 'front:post_author_details' post.author %}">{{ post.author }}</a></h5>
+                                        <div class="desc">
+                                            {{ post.author }}'s article about <a href="{% url 'front:post_category_details' post.category.slug %}">{{ post.category }}</a> - {{ post.title }}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Related posts area-->
+                <div class="section section-post-related">
+                    <div class="section_wrapper clearfix">
+                        <div class="column one column_blog_slider">
+                            <div class="blog_slider clearfix ">
+                                <div class="blog_slider_header">
+                                    {% for post in first_post %}
+                                    {% if post.author == redactor %}
+                                    <h4 class="title">{{ post.author }}'s other posts</h4><a
+                                        class="button button_js slider_prev" href="#"><span class="button_icon"><i
+                                        class="icon-left-open-big"></i></span></a><a
+                                        class="button button_js slider_next" href="#"><span class="button_icon"><i
+                                        class="icon-right-open-big"></i></span></a>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <ul class="blog_slider_ul">
+                                    {% for post in related_post %}
+                                    {% if post.author == redactor %}
+                                    <li class="post  format-standard has-post-thumbnail ">
+                                        <div class="item_wrapper">
+                                            <div class="image_frame scale-with-grid">
+                                                <div class="image_wrapper">
+                                                    {% if post.picture %}
+                                                    <img width="576" height="450" src="{{ post.picture.url }}"
+                                                         class="scale-with-grid wp-post-image" alt="{{ post.title}}"/>
+                                                    {% else %}
+                                                    <img width="576" height="450"
+                                                         src="../../../static/front/press/images/home_press_blog_11-576x450.jpg"
+                                                         class="scale-with-grid wp-post-image"
+                                                         alt="home_press_blog_11"/>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="date_label">
+                                                {{ post.time }}
+                                            </div>
+                                            <div class="desc">
+                                                <h4><a href="{% url 'front:post_details' post.slug %}">{{ post.title }}</a></h4>
+                                                <hr class="hr_color"/>
+                                                <a href="{% url 'front:post_details' post.slug %}"
+                                                   class="button button_left button_js"><span class="button_icon"><i
+                                                        class="icon-layout"></i></span><span class="button_label">Read more</span></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endif%}
+                                    {% endfor %}
+                                </ul>
+                                <div class="slider_pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Comments area-->
+                <div class="section section-post-comments">
+                    <div class="section_wrapper clearfix">
+                        <!-- One full width row-->
+                        <div class="column one comments">
+                            <div id="comments">
+                                <p class="nocomments">
+                                    Comments are closed.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar area-->
+        <div class="sidebar sidebar-1 four columns">
+            <div class="widget-area clearfix ">
+                <!-- Search form-->
+                <aside class="widget widget_search">
+                    <form id="searchform" action="{% url 'front:search_results' %}" method="get">
+                        <input type="text" name="q" placeholder="Enter you search"/>
+                        <input type="submit" class="submit"/>
+                    </form>
+                </aside>
+                <!-- Text Area -->
+                <aside class="widget widget_text">
+                    <h3>FIND US</h3>
+                    <div class="textwidget">
+                        {% for account in social_accounts %}
+                        <a href="{{ account.url }}"
+                           class="icon_bar icon_bar_{{ account.icon_name }} icon_bar_small"><span class="t"><i
+                                class="icon-{{ account.icon_name }}"></i></span><span class="b"><i
+                                class="icon-{{ account.icon_name }}"></i></span></a>
+                        {% endfor %}
+                    </div>
+                </aside>
+                <!-- Categories Area -->
+                <aside class="widget widget_categories">
+                    <h3>CATEGORIES</h3>
+                    <ul>
+                        {% for category in category_list_right %}
+                        <li>
+                            <a href="{% url 'front:post_category_details' category.slug %}"><span>{{ category.name }}</span></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </aside>
+                <!-- Text Area -->
+                <aside class="widget widget_text">
+                    <h3>OUR MAGAZINE</h3>
+                    <div class="textwidget">
+                        Vitae adipiscing turpis. Aenean ligula nibh in, molestie id viverra a, dapibus at dolor. Aenean
+                        ligula nibh in molestie id.
+                    </div>
+                </aside>
+                <!-- Recent posts -->
+                <aside class="widget widget_mfn_recent_posts">
+                    <h3>LATEST POSTS</h3>
+                    <div class="Recent_posts">
+                        <ul>
+                            {% for post in nexts %}
+                            <li class="post  format-standard has-post-thumbnail">
+                                <a href="{% url 'front:post_details' post.slug %}">
+                                    <div class="desc" style="width:95%">
+                                        <h6>{{ post.title }}</h6><span class="date"><i class="icon-clock"></i>{{ post.time }}</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </aside>
+                <!-- Text Area -->
+                <aside class="widget widget_text">
+                    <h3>ADVERT</h3>
+                    <div class="textwidget">
+                        <div style="line-height: 0;">
+                            <a href="#"><img src="../../../static/front/press/images/250x250.gif" alt="">
+                            </a>
+                            <a style="opacity: 0.85" href="#"><img src="../../../static/front/press/images/125x125.gif"
+                                                                   alt="">
+                            </a>
+                            <a href="#"><img src="../../../static/front/press/images/125x125.gif" alt="">
+                            </a>
+                            <a href="#"><img src="../../../static/front/press/images/125x125.gif" alt="">
+                            </a>
+                            <a style="opacity: 0.85" href="#"><img src="../../../static/front/press/images/125x125.gif"
+                                                                   alt="">
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+                <!-- Text Area -->
+                <aside class="widget widget_text">
+                    <div class="textwidget">
+                        <div style="border: 3px solid #ff0000; padding: 30px 20px 15px; text-align: center;">
+                            <h3 style="margin-bottom: 25px;">SIGN UP FOR
+                                <br>
+                                NEWSLETTER</h3>
+                            <p style="margin-bottom: 25px;">
+                                Aenean ligula nibh, mole stie id viverra a, dapibus ante lobortis
+                            </p>
+                            <a class="button button_theme button_js" href="#"><span
+                                    class="button_label">Subscribe</span></a>
+                        </div>
+                    </div>
+                </aside>
+                <!-- Recent Comments Area -->
+                <aside class="widget widget_mfn_recent_comments">
+                    <h3>RECENT COMMENTS</h3>
+                    <div class="Recent_comments">
+                        <ul>
+                            {% for comment in comments %}
+                            <li>
+                                <span class="date_label">{{ comment.time }}</span>
+                                <p>
+                                    <i class="icon-user"></i><strong>{{ comment.name }}</strong> {{ comment.contain }}
+                                </p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </aside>
+                <!--Tag Cloud -->
+                <aside class="widget widget_tag_cloud">
+                    <h3>TAGS</h3>
+                    <div class="tagcloud">
+                        <a href='#' class='tag-link-11' title='2 topics' style='font-size: 13.25pt;'>Design</a><a
+                            href='#' class='tag-link-12' title='2 topics' style='font-size: 13.25pt;'>Framework</a><a
+                            href='#' class='tag-link-17' title='1 topic' style='font-size: 8pt;'>Grid</a><a href='#'
+                                class='tag-link-16'
+                                title='2 topics'
+                                style='font-size: 13.25pt;'>Motion</a><a
+                            href='#' class='tag-link-13' title='3 topics' style='font-size: 16.75pt;'>Themeforest</a><a
+                            href='#' class='tag-link-15' title='3 topics' style='font-size: 16.75pt;'>Video</a><a
+                            href='#' class='tag-link-14' title='5 topics' style='font-size: 22pt;'>Wordpress</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}
